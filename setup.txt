@@ -34,8 +34,8 @@ window pane. Then open a new terminal by going to the Terminal menu at the top o
 2) type these command to create a new environment for this project. Replace <yourProjectName> 
     with the name of your project.
 
-    conda create --name CAPSTONEPROJECT12 python=3.11
-    conda activate CAPSTONEPROJECT12
+    conda create --name <yourProjectName> python=3.6
+    conda activate <yourProjectName>
 
 3) now you want to set this to your default environment for this project. go to the View menu 
     above and choose Command Palette...

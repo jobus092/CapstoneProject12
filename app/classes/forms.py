@@ -23,12 +23,12 @@ class ConsentForm(FlaskForm):
     submit = SubmitField('Submit')
 
 class SleepForm(FlaskForm):
-    rating = SelectField("How would you rate your sleep", choices=[(None,'---'),(1,1),(2,2),(3,3),(4,4),(5,5)], validators=[DataRequired()])
+    rating = SelectField("How would you rate your sleep: 5 is great, 1 is poor", choices=[(None,'---'),(1,1),(2,2),(3,3),(4,4),(5,5)], validators=[DataRequired()])
     starttime = TimeField("Start Time")   
     endtime = TimeField("End Time")   
-    feel = SelectField("How did you feel when you woke up?", choices=[(None,'---'),(1,1),(2,2),(3,3),(4,4),(5,5)], validators=[DataRequired()])
-    sleep_date = DateField("Date you went to sleep")
-    wake_date = DateField("Date you woke up")
+    feel = SelectField("How did you feel when you woke up: 5 is great, 1 is poor", choices=[(None,'---'),(1,1),(2,2),(3,3),(4,4),(5,5)], validators=[DataRequired()])
+    sleep_date = DateField("What date did you go to sleep")
+    wake_date = DateField("What date did you wake up")
     minstosleep = IntegerField("How many minutes did it take you to fall asleep?", validators=[NumberRange(min=0,max=180, message="Enter a number between 0 and 180.")])
     submit = SubmitField("Submit")
 
@@ -41,3 +41,12 @@ class BlogForm(FlaskForm):
 class CommentForm(FlaskForm):
     content = TextAreaField('Comment', validators=[DataRequired()])
     submit = SubmitField('Comment')
+
+class ClinicForm(FlaskForm):
+    name = StringField('Name', validators=[DataRequired()])
+    streetAddress = StringField('Address', validators=[DataRequired()])
+    city = StringField('City', validators=[DataRequired()])
+    state = StringField('State', validators=[DataRequired()])
+    zipcode = StringField('Zipcode',validators=[DataRequired()])
+    description = StringField('Description', validators=[DataRequired()])
+    submit = SubmitField('Submit')

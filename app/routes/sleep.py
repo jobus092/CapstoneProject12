@@ -1,3 +1,4 @@
+from matplotlib import pyplot as plt
 from app import app
 import mongoengine.errors
 from flask import render_template, flash, redirect, url_for
@@ -143,15 +144,16 @@ def sleepgraph():
         else:
             colors.append('red')
     
+    plt.switch_backend('Agg') 
     fig, ax = plt.subplots()
-
+    
     ax.scatter(dates, hours, marker='o', c=colors)
 
 
-    #ax.legend()
+    ax.legend()
     plt.yticks(hours)
     plt.xticks(dates, rotation=45)
-    #plt.gcf().set_size_inches(10, 5)
+    plt.gcf().set_size_inches(10, 5)
     fig.savefig("app/static/graphs/sleep.png", bbox_inches="tight")
-    #fig.show()
+    fig.show()
     return render_template('sleepgraph.html',images=['sleep.png'])
