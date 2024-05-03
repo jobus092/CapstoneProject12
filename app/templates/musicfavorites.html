@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+{% if musics %}
+    {% for music in musics %}
+        {% if music.favorite == "True" %}
+        <div class="row border-bottom">
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 class="display-5">Date</h3>
+                {% endif %}
+
+                <a href="/music/{{music.id}}">
+                    {{moment(music.create_date).calendar()}}
+                </a>
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 class="display-5">User</h3>
+                {% endif %}
+                {{music.author.fname}} {{music.author.lname}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Song</h3>
+                {% endif %}
+                {{music.subject}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Artist</h3>
+                {% endif %}
+                {{music.artist}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Genre</h3>
+                {% endif %}
+                {{music.genre}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Favorite?</h3>
+                {% endif %}
+                {{music.favorite}}
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+{% else %}
+
+{% endif %}
+
+{% endblock %}

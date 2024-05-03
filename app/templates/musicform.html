@@ -7,7 +7,24 @@
 <img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
 
 <img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
-        <h1>Add a post!</h1>
+
+        <h1><center>Add a Song!</center></h1>
+
+        <div class="text-center">
+
+
+        <form method=post>
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.subject(size=64) }}
+                <!--List the errors for this field-->
+                {% for error in form.subject.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+
+
+        <h1>Add an Artist!</h1>
 
         <div class="text-center">
 
@@ -15,29 +32,33 @@
         <form method=post>
             {{ form.hidden_tag() }}
             <p>
-                {{ form.subject.label }} <br>
-                {{ form.subject(size=64) }}
+                {{ form.artist(size=64) }}
                 <!--List the errors for this field-->
                 {% for error in form.subject.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
+
+        <h1>Add a Genre!</h1>
+
+        <div class="text-center">
+
+        
+        <form method=post>
+            {{ form.hidden_tag() }}
             <p>
-                Add your comments here <br>
-                {{ form.content(cols=64, rows=10) }}
-                <!--List the errors for this field-->
-                {% for error in form.content.errors %}
-                    <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
-            <p>
-                {{ form.tag.label }} <br>
-                {{ form.tag(size=64) }}
+                {{ form.genre(size=64) }}
                 <!--List the errors for this field-->
                 {% for error in form.subject.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
+
+        <h1>Favorite?</h1>
+
+        {{ form.favorite}}
+
+            
              <p>
                 <img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
                 <img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
@@ -61,3 +82,4 @@
     </div>
        
 {% endblock %}
+

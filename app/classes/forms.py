@@ -14,12 +14,14 @@ class ProfileForm(FlaskForm):
     lname = StringField('Last Name', validators=[DataRequired()]) 
     image = FileField("Image") 
     submit = SubmitField('Post')
-
+    role = SelectField('Role',choices=[("Teacher","Teacher"),("Student","Student")])
+    number = IntegerField("Enter a Phone Number", validators=[NumberRange(min=0,max=9999999999, message="Enter a phone number here")])
+    
 class ConsentForm(FlaskForm):
     adult_fname = StringField('First Name',validators=[DataRequired()])
     adult_lname = StringField('Last Name',validators=[DataRequired()])
     adult_email = EmailField('Email',validators=[Email()])
-    consent = RadioField('Do you want your parents or teachers to see your sleep data/graph', choices=[(True,"True"),(False,"False")])
+    consent = RadioField('Do you want your parents or teachers to see your sleep data/graph', choices=[(True,"Yes"),(False,"No")])
     submit = SubmitField('Submit')
 
 class SleepForm(FlaskForm):
@@ -37,6 +39,13 @@ class BlogForm(FlaskForm):
     content = TextAreaField('Blog', validators=[DataRequired()])
     tag = StringField('Tag', validators=[DataRequired()])
     submit = SubmitField('Blog')
+
+class MusicForm(FlaskForm):
+    subject = StringField('Subject', validators=[DataRequired()])
+    genre =  StringField('Subject', validators=[DataRequired()])
+    artist =  StringField('Subject', validators=[DataRequired()])
+    favorite = RadioField('Do you want to add this song to your favorites?', choices=[(True,"Yes"),(False,"No")])
+    submit = SubmitField('Music')
 
 class CommentForm(FlaskForm):
     content = TextAreaField('Comment', validators=[DataRequired()])

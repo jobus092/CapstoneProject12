@@ -10,6 +10,7 @@ from typing import KeysView
 from xmlrpc.client import Boolean
 
 from setuptools import SetuptoolsDeprecationWarning
+from wtforms import IntegerField
 from app import app
 from flask import flash
 from flask_login import UserMixin
@@ -35,6 +36,8 @@ class User(UserMixin, Document):
     adult_lname = StringField()
     adult_email = StringField()
     consent = BooleanField(default=False)
+    role = StringField()
+    number = IntField()
 
     meta = {
         'ordering': ['lname','fname']
@@ -81,6 +84,17 @@ class Comment(Document):
         'ordering': ['-createdate']
     }
 
+class Music(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    subject = StringField()
+    genre = StringField()
+    artist = StringField()
+    favorite = StringField()
+    create_date = DateTimeField(default=dt.datetime.utcnow)
+    modify_date = DateTimeField()
+    meta = {
+        'ordering': ['-createdate']
+    }
 class Clinic(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
     createdate = DateTimeField(default=dt.datetime.utcnow)
@@ -97,3 +111,7 @@ class Clinic(Document):
     meta = {
         'ordering': ['-createdate']
     }
+
+ 
+
+   
